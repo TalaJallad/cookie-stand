@@ -6,3 +6,4 @@
 
 # Lab07
 1- create constructor and prototypes for functions
+2- Create table
