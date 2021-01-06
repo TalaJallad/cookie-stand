@@ -1,6 +1,49 @@
-header {
-    text-align: center;
+header img {
+    display:block ;
     margin:auto;
-    margin-top: 130px;
+    margin-top: 30px;
+    width: 30%;   
     
 }
+
+main{
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    height: 350px;
+}
+
+main div {
+    width: 33%;
+    background-color: black;
+    display: inline-block;
+    text-align: center;
+    height: 350px;
+    vertical-align: middle;
+}
+
+h2, h1 {
+    color:green;
+}
+
+body {
+    text-align: center;
+
+}
+
+h3 {
+    color: white;
+    
+}
+
+a {
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    float: left;
+}
+a:hover{
+    color: green;
+}
+
+

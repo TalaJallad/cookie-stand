@@ -3,7 +3,26 @@
     text-align: center;
   
 }
-
+div {
+    width: 100%;
+}
 table {
-    margin-top: 60px;
+    margin: auto;
+    margin-top: 150px;
+    width: 70%;
+   
+}
+
+nav a {
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    text-align: center
+    position: relative;
+}
+nav a:hover{
+    color: green;
+}
+body {
+    display: block;
 }
