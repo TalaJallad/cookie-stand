@@ -1,5 +1,5 @@
 'use strict';
-
+var locationNames = []
 //create constructor
 function StoreLocation(maxNumCust, minNumCust, cookieAvg, randomNum, totalCookiesPerHour, cookiesTotalSum, name) {
     this.max = maxNumCust;
@@ -7,10 +7,12 @@ function StoreLocation(maxNumCust, minNumCust, cookieAvg, randomNum, totalCookie
     this.average = cookieAvg;
     this.random = randomNum;
     this.cookiesPerHour = totalCookiesPerHour;
-    this.dailytotal = cookiesTotalSum
-    this.locationName = name
+    this.dailytotal = cookiesTotalSum;
+    this.locationName = name;
+    locationNames.push(this)
 
 }
+
 
 //create objects
 var locationOne = new StoreLocation(65, 23, 6.3, [], [], 0, 'Seattle');
@@ -69,7 +71,7 @@ locationFour.sumCookies();
 locationFive.sumCookies();
 
 //variables to use for table:
-var locationNames = [locationOne, locationTwo, locationThree, locationFour, locationFive]
+
 var headerContent = ["", '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Location Total']
 var parentElement = document.getElementById('cookiesPerHourList');
 var table = document.createElement('table');
@@ -121,7 +123,6 @@ locationThree.renderBodyContent();
 locationFour.renderBodyContent();
 locationFive.renderBodyContent();
 
-
 // create footer-total sum
 function tableFooter() {
     var totalSumRow = document.createElement('tr');
@@ -161,6 +162,35 @@ function tableFooter() {
 
 // call total sum function
 tableFooter();
+
+
+
+
+
+//get form input:
+var cookiesForm = document.getElementById('Cookie Sales')
+cookiesForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    table.innerHTML = "";
+    var maxCust = event.target.maxNumCust.value;
+    var minCust = event.target.minNumCust.value;
+    var Avg = event.target.cookieAvg.value;
+    var thelocationsName = event.target.theLocationName.value;
+    var newLocation = new StoreLocation(maxCust, minCust, Avg, [], [], 0, thelocationsName);
+    tableHeader();
+    for (var i=0; i<locationNames.length; i++){
+        locationNames[i].generateRandomNum();
+        locationNames[i].cookiesEachHour();
+        locationNames[i].sumCookies();
+        locationNames[i].renderBodyContent();
+    }
+    tableFooter();
+  
+});
+
+
+
+
 
 
 
