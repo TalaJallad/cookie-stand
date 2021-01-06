@@ -1,21 +1,23 @@
 'use strict';
 
 //create constructor
-function StoreLocation(maxNumCust, minNumCust, cookieAvg, randomNum, totalCookiesPerHour, cookiesTotalSum) {
+function StoreLocation(maxNumCust, minNumCust, cookieAvg, randomNum, totalCookiesPerHour, cookiesTotalSum, name) {
     this.max = maxNumCust;
     this.min = minNumCust;
     this.average = cookieAvg;
     this.random = randomNum;
     this.cookiesPerHour = totalCookiesPerHour;
     this.dailytotal = cookiesTotalSum
+    this.locationName = name
+
 }
 
 //create objects
-var seattle = new StoreLocation(65, 23, 6.3, [], [], 0);
-var tokyo = new StoreLocation(24, 3, 1.2, [], [], 0);
-var dubai = new StoreLocation(38, 11, 3.7, [], [], 0);
-var paris = new StoreLocation(38, 20, 2.3, [], [], 0);
-var lima = new StoreLocation(16, 2, 4.6, [], [], 0);
+var locationOne = new StoreLocation(65, 23, 6.3, [], [], 0, 'Seattle');
+var locationTwo = new StoreLocation(24, 3, 1.2, [], [], 0, 'Tokyo');
+var locationThree = new StoreLocation(38, 11, 3.7, [], [], 0, 'Dubai');
+var locationFour = new StoreLocation(38, 20, 2.3, [], [], 0, 'Paris');
+var locationFive = new StoreLocation(16, 2, 4.6, [], [], 0, 'Lima');
 
 //create function for random num
 StoreLocation.prototype.generateRandomNum = function () {
@@ -27,11 +29,11 @@ StoreLocation.prototype.generateRandomNum = function () {
 
 }
 // // call function
-seattle.generateRandomNum();
-tokyo.generateRandomNum();
-dubai.generateRandomNum();
-paris.generateRandomNum();
-lima.generateRandomNum();
+locationOne.generateRandomNum();
+locationTwo.generateRandomNum();
+locationThree.generateRandomNum();
+locationFour.generateRandomNum();
+locationFive.generateRandomNum();
 
 // create function for cookies per hour
 StoreLocation.prototype.cookiesEachHour = function () {
@@ -43,11 +45,11 @@ StoreLocation.prototype.cookiesEachHour = function () {
 }
 
 // // call function
-seattle.cookiesEachHour();
-tokyo.cookiesEachHour();
-dubai.cookiesEachHour();
-paris.cookiesEachHour();
-lima.cookiesEachHour();
+locationOne.cookiesEachHour();
+locationTwo.cookiesEachHour();
+locationThree.cookiesEachHour();
+locationFour.cookiesEachHour();
+locationFive.cookiesEachHour();
 
 // create function for daily total sum of cookies
 StoreLocation.prototype.sumCookies = function () {
@@ -60,19 +62,19 @@ StoreLocation.prototype.sumCookies = function () {
 }
 
 // // call function
-seattle.sumCookies();
-tokyo.sumCookies();
-dubai.sumCookies();
-paris.sumCookies();
-lima.sumCookies();
+locationOne.sumCookies();
+locationTwo.sumCookies();
+locationThree.sumCookies();
+locationFour.sumCookies();
+locationFive.sumCookies();
 
 //variables to use for table:
-var locationNamesString = ['Seattle', 'Tokyo', 'Dubai', 'Paris', 'Lima'];
-var headerContent = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Location Total']
+var locationNames = [locationOne, locationTwo, locationThree, locationFour, locationFive]
+var headerContent = ["", '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Location Total']
 var parentElement = document.getElementById('cookiesPerHourList');
 var table = document.createElement('table');
 parentElement.appendChild(table);
-//the function:
+//the function for horiaontal heading:
 function tableHeader() {
     var headerRow = document.createElement('tr');
     table.appendChild(headerRow);
@@ -84,27 +86,18 @@ function tableHeader() {
     }
 
 }
-
-// function tableHeaderVertical() { //needs work//
-//     for (var x = 0; x < locationNamesString; x++); {
-//         var headerTwo = document.createElement('tr');
-//         table.appendChild(headerTwo);
-//         var tableHeadVertical = document.createElement('th')
-//         tableHeadVertical.textContent = locationNamesString[x];
-//         headerTwo.appendChild(tableHeadVertical);
-
-//     }
-// }
-
-
 // //call table header function:
 tableHeader();
 
+
 // create table body using render ():
-StoreLocation.prototype.renderStoreLocation = function () { //render is a methos which is part of the object
+StoreLocation.prototype.renderBodyContent = function () { //render is a method which is part of the object
     //create row for each location:
     var bodyRows = document.createElement('tr');
     table.appendChild(bodyRows);
+    var locationsName = document.createElement("th")
+    locationsName.textContent = this.locationName
+    bodyRows.appendChild(locationsName)
     //loop through the number of cookies for each loaction:
     for (var l = 0; l <= 13; l++) {
         var tableData = document.createElement('td');
@@ -122,13 +115,52 @@ StoreLocation.prototype.renderStoreLocation = function () { //render is a methos
 
 }
 
-seattle.renderStoreLocation();
-tokyo.renderStoreLocation();
-dubai.renderStoreLocation();
-paris.renderStoreLocation();
-lima.renderStoreLocation();
+locationOne.renderBodyContent();
+locationTwo.renderBodyContent();
+locationThree.renderBodyContent();
+locationFour.renderBodyContent();
+locationFive.renderBodyContent();
 
 
+// create footer-total sum
+function tableFooter() {
+    var totalSumRow = document.createElement('tr');
+    table.appendChild(totalSumRow);
+    var totalPerHourHead = document.createElement('th')
+    totalPerHourHead.textContent = 'Total'
+    totalSumRow.appendChild(totalPerHourHead)
+    var sum = 0
+
+    for (var i = 0; i <= 13; i++) {
+        var totalData = document.createElement('td');
+        totalSumRow.appendChild(totalData);
+        var sum = 0
+        for (var k = 0; k < locationNames.length; k++) {
+            sum = sum + locationNames[k].cookiesPerHour[i];
+
+
+
+        }
+        totalData.textContent = sum
+
+
+
+    }
+
+    var dailyTotalSumData = document.createElement('td')
+    totalSumRow.appendChild(dailyTotalSumData);
+    var sumDaily = 0
+    for (var v = 0; v < locationNames.length; v++) {
+        sumDaily = sumDaily + locationNames[v].dailytotal
+    }
+
+    dailyTotalSumData.textContent = sumDaily
+
+}
+
+
+// call total sum function
+tableFooter();
 
 
 
