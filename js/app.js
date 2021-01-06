@@ -1,4 +1,5 @@
 'use strict';
+
 var locationNames = []
 //create constructor
 function StoreLocation(maxNumCust, minNumCust, cookieAvg, randomNum, totalCookiesPerHour, cookiesTotalSum, name) {
@@ -30,12 +31,7 @@ StoreLocation.prototype.generateRandomNum = function () {
     }
 
 }
-// // call function
-locationOne.generateRandomNum();
-locationTwo.generateRandomNum();
-locationThree.generateRandomNum();
-locationFour.generateRandomNum();
-locationFive.generateRandomNum();
+
 
 // create function for cookies per hour
 StoreLocation.prototype.cookiesEachHour = function () {
@@ -46,12 +42,7 @@ StoreLocation.prototype.cookiesEachHour = function () {
 
 }
 
-// // call function
-locationOne.cookiesEachHour();
-locationTwo.cookiesEachHour();
-locationThree.cookiesEachHour();
-locationFour.cookiesEachHour();
-locationFive.cookiesEachHour();
+
 
 // create function for daily total sum of cookies
 StoreLocation.prototype.sumCookies = function () {
@@ -63,12 +54,6 @@ StoreLocation.prototype.sumCookies = function () {
     return this.dailytotal = sum;
 }
 
-// // call function
-locationOne.sumCookies();
-locationTwo.sumCookies();
-locationThree.sumCookies();
-locationFour.sumCookies();
-locationFive.sumCookies();
 
 //variables to use for table:
 
@@ -88,8 +73,7 @@ function tableHeader() {
     }
 
 }
-// //call table header function:
-tableHeader();
+
 
 
 // create table body using render ():
@@ -113,15 +97,8 @@ StoreLocation.prototype.renderBodyContent = function () { //render is a method w
     total.textContent = this.dailytotal
 
 
-
-
 }
 
-locationOne.renderBodyContent();
-locationTwo.renderBodyContent();
-locationThree.renderBodyContent();
-locationFour.renderBodyContent();
-locationFive.renderBodyContent();
 
 // create footer-total sum
 function tableFooter() {
@@ -159,12 +136,20 @@ function tableFooter() {
 
 }
 
+// //call table header function:
+tableHeader();
 
-// call total sum function
+//Call functions:
+for (var i=0; i<locationNames.length; i++){
+    locationNames[i].generateRandomNum();
+    locationNames[i].cookiesEachHour();
+    locationNames[i].sumCookies();
+    locationNames[i].renderBodyContent();
+}
+
+
+// call total sum function in footer
 tableFooter();
-
-
-
 
 
 //get form input:
