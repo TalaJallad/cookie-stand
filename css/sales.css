@@ -1,5 +1,9 @@
- td, tr {
+  tr td {
     border: 1px solid green;
     text-align: center;
+  
+}
+
+table {
     margin-top: 60px;
 }
