@@ -26,3 +26,8 @@ nav a:hover{
 body {
     display: block;
 }
+form {
+    color: green;
+    margin:auto;
+    width: 70%;
+}
