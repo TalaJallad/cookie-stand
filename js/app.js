@@ -10,7 +10,7 @@ function StoreLocation(maxNumCust, minNumCust, cookieAvg, randomNum, totalCookie
     this.cookiesPerHour = totalCookiesPerHour;
     this.dailytotal = cookiesTotalSum;
     this.locationName = name;
-    locationNames.push(this)
+    locationNames.push(this);
 
 }
 
@@ -157,8 +157,8 @@ var cookiesForm = document.getElementById('Cookie Sales')
 cookiesForm.addEventListener('submit', function (event) {
     event.preventDefault();
     table.innerHTML = "";
-    var maxCust = event.target.maxNumCust.value;
-    var minCust = event.target.minNumCust.value;
+    var maxCust = parseInt(event.target.maxNumCust.value);
+    var minCust = parseInt(event.target.minNumCust.value);
     var Avg = event.target.cookieAvg.value;
     var thelocationsName = event.target.theLocationName.value;
     var newLocation = new StoreLocation(maxCust, minCust, Avg, [], [], 0, thelocationsName);

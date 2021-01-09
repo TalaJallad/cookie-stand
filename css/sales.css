@@ -1,33 +1,84 @@
   tr td {
     border: 1px solid green;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #c05555;
   
+}
+th{
+    color: #42684e;
+    font-family:'Mountains of Christmas' ;
+    font-weight: bold;
+    
+
 }
 div {
     width: 100%;
 }
 table {
     margin: auto;
-    margin-top: 150px;
+    margin-top: 60px;
     width: 70%;
    
 }
 
-nav a {
+header nav, img {
+    vertical-align: middle;
+}
+
+header img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+
+nav :nth-child(2)  {
+    font-size: 25px;
+    text-decoration: none;
+    color: #42684e;
+    float: left;
+    margin-left: 30px;
+    font-family: 'Mountains of Christmas';
+}
+
+nav :nth-child(1)  {
     font-size: 30px;
     text-decoration: none;
-    color: black;
-    text-align: center
-    position: relative;
+    color: #42684e;
+    float: right;
+    margin-right: 10px;
+    font-family: 'Mountains of Christmas';
 }
+
 nav a:hover{
-    color: green;
+    color: #6a492b;
 }
+
 body {
     display: block;
+    background-image: url(https://images-na.ssl-images-amazon.com/images/I/31lvuwTxF4L._AC_.jpg);
+    background-repeat: round;
+ 
+
 }
 form {
-    color: green;
+    color: #42684e;
     margin:auto;
     width: 70%;
+    margin-top: 20px;
+    font-family: 'Mountains of Christmas' ;
+}
+#submit {
+    font-family: 'Mountains of Christmas' ;
+    color: #42684e;
+    font-size: 15px;
+    margin-left: 50px;
+    margin-top: 5px;
+    font-weight: bold;
+    width: 20%;
+}
+input {
+    width: 50% ;
+    color: #c05555;
 }
